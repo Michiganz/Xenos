@@ -1,4 +1,5 @@
-<html lang="fr" class="scroll-smooth"><head><meta charset="UTF-8">
+<html lang="fr" class="scroll-smooth"><head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xenos Innovation Tech</title>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -112,21 +113,30 @@ mix-blend-mode: screen;
 opacity: 0.6;
 }
 .service-list li {
-position: relative;
-padding-left: 1.5rem;
-margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 .service-list li::before {
-content: "•";
-position: absolute;
-left: 0;
-color: #E500C0;
-font-weight: bold;
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #E500C0; 
+    font-weight: bold;
+}
+.hero-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+.dark .hero-grid {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 </style>
-<style>
-/* 3D Transform utilities */
-</style></head>
+</head>
 <body class="bg-white text-neutral-900 dark:bg-black dark:text-neutral-300 font-sans antialiased selection:bg-[#8800FF] selection:text-white overflow-x-hidden transition-colors duration-500">
 
     <!-- Navigation -->
@@ -158,17 +168,22 @@ font-weight: bold;
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section (Cleaned) -->
+    
+   
+    <!-- Hero Section -->
     <header class="relative min-h-screen flex items-center overflow-hidden perspective-1000 bg-white dark:bg-black transition-colors duration-500">
         
-        <div class="absolute inset-0 bg-white dark:bg-black z-0 transition-colors duration-500">
-            <!-- Subtle Mesh Gradient instead of Shader -->
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-pulse-slow"></div>
-            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-float"></div>
+        <!-- Grid Background --
+        <div class="absolute inset-0 z-0 hero-grid pointer-events-none"></div>
+        <!-- Spline 3D Scene -->
+        <div class="absolute top-0 left-1/2 inset-0 z-0">
+             <iframe src="https://my.spline.design/orb-rOyaApHalk1Vl5mMVIMYeCsu/" frameborder="0" width="100%" height="100%"  class="w-full h-full block"></iframe>
+             <!-- Fade Overlay for smooth transition-->
+             <div class="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white dark:to-black pointer-events-none"></div>
+             <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-black pointer-events-none"></div>
         </div>
         
-        <!-- Social Sidebar -->
+        <!-- Social Sidebar-->
         <div class="hidden md:flex flex-col lg:left-12 -translate-y-1/2 z-20 absolute top-1/2 left-8 space-y-8 items-center justify-center">
           <div class="bg-gradient-to-br from-blue-300/50 to-blue-600 w-[2px] h-16"></div>
           <a href="#" class="text-neutral-400 dark:text-neutral-500 hover:text-black dark:hover:text-white hover:scale-110 transition-all duration-300"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="20" height="20" viewBox="0 0 24 24" data-icon="lucide:linkedin" class="iconify iconify--lucide"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2a2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6M2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></g></svg></a>
@@ -177,9 +192,10 @@ font-weight: bold;
           <div class="bg-gradient-to-br from-fuchsia-400/50 to-fuchsia-600 w-[1px] h-16"></div>
         </div>
 
-        <!-- Main Content -->
-        <div class="container mx-auto px-6 md:px-24 relative z-10 pt-20">
-            <div class="max-w-4xl preserve-3d">
+        <!-- Main Content   -->
+        <div class="container mx-auto px-6 md:px-24 relative z-10 pt-20 pointer-events-none">
+            <!-- Pointer events auto added to interactive elements inside the container -->
+            <div class="max-w-4xl preserve-3d pointer-events-auto">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm mb-8 animate-float">
                     <span class="relative flex h-2 w-2">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E500C0] opacity-75"></span>
@@ -197,7 +213,7 @@ font-weight: bold;
                     Nous accompagnons les entreprises ambitieuses vers une visibilité digitale mondiale, en fusionnant technologie de pointe et design intemporel.
                 </p>
 
-                <a href="#contact" class="group relative inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white rounded-full overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-lg">
+                <a href="#contact" class="group relative inline-flex items-center justify-center px-8 py-4 bg-black dark:bg-white rounded-full overflow-hidden transition-transform duration-300 hover:scale-[1.02] shadow-lg pointer-events-auto">
                     <span class="absolute inset-0 bg-gradient-to-r from-neutral-800 to-black dark:from-neutral-100 dark:to-white opacity-100 group-hover:opacity-90 transition-opacity"></span>
                     <span class="flex items-center gap-2 text-white dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-br dark:from-[#5F00FF] dark:to-[#E500C0] text-lg font-bold tracking-tight font-display relative">
                         <span data-i18n="hero_cta">Démarrer le projet</span>
@@ -575,7 +591,7 @@ font-weight: bold;
                     </div>
                     <div>
                       <span class="block text-xs text-neutral-400 uppercase tracking-widest mb-1 font-semibold">Email</span>
-                      <span class="text-white font-medium tracking-wide">contact@xenosinnovation.tech</span>
+                      <span class="text-white font-medium tracking-wide">contact@xenosinnov.tech</span>
                     </div>
                   </div>
                    <div class="flex items-center gap-6 group">
@@ -584,7 +600,7 @@ font-weight: bold;
                     </div>
                     <div>
                       <span class="block text-xs text-neutral-400 uppercase tracking-widest mb-1 font-semibold">Téléphone</span>
-                      <span class="text-white font-medium tracking-wide">+33 1 23 45 67 89</span>
+                      <span class="text-white font-medium tracking-wide">+237 6 23 45 67 89</span>
                     </div>
                   </div>
                    <div class="flex items-center gap-6 group">
