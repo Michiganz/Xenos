@@ -1,176 +1,188 @@
-<html lang="fr" class="scroll-smooth"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xenos Innovation Tech</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <!-- GSAP & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-    
-    <script>
-        // Theme Management
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-        function toggleTheme() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        }
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            purple: '#5F00FF',
-                            mid: '#8800FF',
-                            magenta: '#E500C0',
-                        }
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<html lang="fr" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xenos Innovation Tech</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<!-- GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+// Theme Management
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+document.documentElement.classList.add('dark');
+} else {
+document.documentElement.classList.remove('dark');
+}
+function toggleTheme() {
+if (document.documentElement.classList.contains('dark')) {
+document.documentElement.classList.remove('dark');
+localStorage.theme = 'light';
+} else {
+document.documentElement.classList.add('dark');
+localStorage.theme = 'dark';
+}
+}
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+display: ['Poppins', 'sans-serif'],
+},
+colors: {
+brand: {
+purple: '#5F00FF',
+mid: '#8800FF',
+magenta: '#E500C0',
+}
+},
+animation: {
+'float': 'float 6s ease-in-out infinite',
+'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+},
+keyframes: {
+float: {
+'0%, 100%': { transform: 'translateY(0)' },
+'50%': { transform: 'translateY(-20px)' },
+}
+}
+}
+}
+}
+</script>
+<style>
+.glass-nav {
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+}
+.text-gradient {
+background: linear-gradient(135deg, #5F00FF, #8800FF, #E500C0);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.gradient-border-bottom {
+position: relative;
+}
+.gradient-border-bottom::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0%;
+height: 1px;
+background: linear-gradient(90deg, #5F00FF, #E500C0);
+transition: width 0.4s ease;
+}
+.gradient-border-bottom:hover::after {
+width: 100%;
+}
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.tilt-card {
+transform-style: preserve-3d;
+transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+transition: transform 0.1s ease-out;
+will-change: transform;
+}
+.tilt-card-content { transform: translateZ(20px); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+.dark ::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+/* Shader Canvas Style */
+#shader-canvas {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 0;
+opacity: 0.4;
+pointer-events: none;
+mix-blend-mode: screen;
+}
+.dark #shader-canvas {
+opacity: 0.6;
+}
+.service-list li {
+position: relative;
+padding-left: 1.5rem;
+margin-bottom: 0.5rem;
+}
+.service-list li::before {
+content: "•";
+position: absolute;
+left: 0;
+color: #E500C0;
+font-weight: bold;
+}
+.hero-grid {
+background-size: 40px 40px;
+background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
+mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+-webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+.dark .hero-grid {
+background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+/* Horizontal Scroll Specifics */
+.horizontal-scroll-section {
+width: 100%;
+overflow: hidden;
+}
+.pin-wrap {
+height: 100vh;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+padding: 0 5vw;
+}
+.pin-wrap > * {
+min-width: 60vw;
+padding: 0 2vw;
+}
+@media (max-width: 768px) {
+.pin-wrap { height: auto; display: block; padding: 2rem 1rem; }
+.pin-wrap > * { min-width: 100%; margin-bottom: 2rem; padding: 0; }
+}
+/* Sepia to Color transition */
+.sepia-card img, .sepia-card .bg-image {
+filter: sepia(100%);
+transition: filter 0.5s ease-in-out, transform 0.7s ease;
+}
+.sepia-card:hover img, .sepia-card:hover .bg-image {
+filter: sepia(0%);
+}
+/* Loader specific styles */
+#site-loader {
+will-change: transform;
+}
+</style>
+<style>
+/* 3D Transform utilities */
+</style></head>
+<body class="bg-white text-neutral-900 dark:bg-black dark:text-neutral-300 font-sans antialiased selection:bg-[#8800FF] selection:text-white overflow-x-hidden transition-colors duration-500 overflow-hidden">
 
-    <style>
-        .glass-nav {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #5F00FF, #8800FF, #E500C0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .gradient-border-bottom {
-            position: relative;
-        }
-        .gradient-border-bottom::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 1px;
-            background: linear-gradient(90deg, #5F00FF, #E500C0);
-            transition: width 0.4s ease;
-        }
-        .gradient-border-bottom:hover::after {
-            width: 100%;
-        }
-        .perspective-1000 { perspective: 1000px; }
-        .preserve-3d { transform-style: preserve-3d; }
-        .tilt-card {
-            transform-style: preserve-3d;
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-            transition: transform 0.1s ease-out;
-            will-change: transform;
-        }
-        .tilt-card-content { transform: translateZ(20px); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f5f5f5; }
-        .dark ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
-        
-        /* Shader Canvas Style */
-        #shader-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.4;
-            pointer-events: none;
-            mix-blend-mode: screen;
-        }
-        .dark #shader-canvas {
-            opacity: 0.6;
-        }
-        
-        .service-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .service-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #E500C0;
-            font-weight: bold;
-        }
-        
-        .hero-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(128, 128, 128, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(128, 128, 128, 0.05) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-        }
-        .dark .hero-grid {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        }
-        
-        /* Horizontal Scroll Specifics */
-        .horizontal-scroll-section {
-            width: 100%;
-            overflow: hidden;
-        }
-        .pin-wrap {
-            height: 100vh;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0 5vw;
-        }
-        .pin-wrap > * {
-            min-width: 60vw;
-            padding: 0 2vw;
-        }
-        @media (max-width: 768px) {
-            .pin-wrap { height: auto; display: block; padding: 2rem 1rem; }
-            .pin-wrap > * { min-width: 100%; margin-bottom: 2rem; padding: 0; }
-        }
-        
-        /* Sepia to Color transition */
-        .sepia-card img, .sepia-card .bg-image {
-            filter: sepia(100%);
-            transition: filter 0.5s ease-in-out, transform 0.7s ease;
-        }
-        .sepia-card:hover img, .sepia-card:hover .bg-image {
-            filter: sepia(0%);
-        }
-    </style>
-</head>
-<body class="bg-white text-neutral-900 dark:bg-black dark:text-neutral-300 font-sans antialiased selection:bg-[#8800FF] selection:text-white overflow-x-hidden transition-colors duration-500">
+    <!-- Loading Screen -->
+    <div id="site-loader" class="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center pointer-events-none select-none">
+        <div class="relative flex flex-col items-center">
+            <h1 id="loader-title" class="font-display font-bold text-6xl md:text-9xl tracking-tighter text-white opacity-0 mix-blend-difference">
+                XENOS
+            </h1>
+            <div id="loader-subtitle-container" class="overflow-hidden mt-2 md:mt-4">
+                <p id="loader-subtitle" class="font-sans text-xs md:text-sm font-medium tracking-[0.3em] uppercase text-neutral-400 opacity-0 translate-y-full">
+                    Innovation Technologie
+                </p>
+            </div>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-nav bg-white/80 dark:bg-black/80 border-b border-neutral-200 dark:border-white/5 transition-colors duration-500">
@@ -864,46 +876,8 @@
             render();
         };
 
-        // Initialize Everything
-        document.addEventListener('DOMContentLoaded', () => {
-            initShader();
-            initLanguage();
-
-            // Register GSAP Plugins
-            gsap.registerPlugin(ScrollTrigger);
-
-            // 1. Text Marquee Animation
-            gsap.to(".marquee-text-container", {
-                xPercent: -50,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".marquee-text-container",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 0.5
-                }
-            });
-
-            // 2. Horizontal Scroll Section (Portfolio)
-            const horizontalSection = document.querySelector(".horizontal-scroll-section");
-            const pinWrap = document.querySelector(".pin-wrap");
-            const horizontalScrollLength = pinWrap.scrollWidth - window.innerWidth;
-
-            if (window.innerWidth > 768) {
-                gsap.to(pinWrap, {
-                    x: -horizontalScrollLength,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: horizontalSection,
-                        pin: true,
-                        scrub: 1,
-                        start: "top top",
-                        end: () => "+=" + pinWrap.scrollWidth,
-                        invalidateOnRefresh: true
-                    }
-                });
-            }
-
+        // Site Animations Function (Called after Loader)
+        function initSiteAnimations() {
             // 3. Hero Elements Staggered Fade In
             gsap.from(".gsap-hero-elem", {
                 y: 50,
@@ -911,7 +885,7 @@
                 duration: 1,
                 stagger: 0.2,
                 ease: "power3.out",
-                delay: 0.2
+                delay: 0.1
             });
 
             // 4. Generic Fade Up on Scroll
@@ -960,6 +934,80 @@
                     }
                 });
             });
+        }
+
+        // Initialize Everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initShader();
+            initLanguage();
+
+            // Register GSAP Plugins
+            gsap.registerPlugin(ScrollTrigger);
+
+            // --- LOADER SEQUENCE START ---
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    // Unlock scroll and start site animations
+                    document.body.classList.remove('overflow-hidden');
+                    initSiteAnimations();
+                }
+            });
+
+            tl.to("#loader-title", {
+                opacity: 1,
+                duration: 2.5,
+                ease: "power2.inOut" // Lentement (Légère apparition ease in)
+            })
+            .to("#loader-subtitle", {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power3.out"
+            }, "-=1.0")
+            .to("#loader-title, #loader-subtitle", {
+                scale: 0.95,
+                duration: 1,
+                ease: "power2.inOut",
+                delay: 0.2
+            })
+            .to("#site-loader", {
+                yPercent: -100,
+                duration: 1.4,
+                ease: "expo.inOut"
+            }, "-=0.5");
+            // --- LOADER SEQUENCE END ---
+
+            // 1. Text Marquee Animation
+            gsap.to(".marquee-text-container", {
+                xPercent: -50,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".marquee-text-container",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 0.5
+                }
+            });
+
+            // 2. Horizontal Scroll Section (Portfolio)
+            const horizontalSection = document.querySelector(".horizontal-scroll-section");
+            const pinWrap = document.querySelector(".pin-wrap");
+            const horizontalScrollLength = pinWrap.scrollWidth - window.innerWidth;
+
+            if (window.innerWidth > 768) {
+                gsap.to(pinWrap, {
+                    x: -horizontalScrollLength,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: horizontalSection,
+                        pin: true,
+                        scrub: 1,
+                        start: "top top",
+                        end: () => "+=" + pinWrap.scrollWidth,
+                        invalidateOnRefresh: true
+                    }
+                });
+            }
 
             // Tilt Card Logic (Vanilla JS)
             const cards = document.querySelectorAll('.tilt-card');
@@ -1106,5 +1154,6 @@
             setLanguage(userLang);
         }
     </script>
+
 
 </body></html>
